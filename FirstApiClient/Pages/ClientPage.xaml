@@ -6,7 +6,35 @@
       xmlns:local="clr-namespace:FirstApiClient.Pages"
       mc:Ignorable="d"
       Title="ClientPage" Height="450" Width="800">
-    <Grid>
+        
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"></ColumnDefinition>
+            <ColumnDefinition Width="40*"></ColumnDefinition>
+            <ColumnDefinition Width="25*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25*"></RowDefinition>
+            <RowDefinition Height="40*"></RowDefinition>
+            <RowDefinition Height="25*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label FontSize="50">Клиент</Label>
+        </StackPanel>
+        
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <ListView Name="ClientListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding LastName}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
         
     </Grid>
 </Page>
