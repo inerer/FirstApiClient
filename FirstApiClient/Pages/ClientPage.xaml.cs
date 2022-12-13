@@ -12,8 +12,9 @@ namespace FirstApiClient.Pages
 {
     public partial class ClientPage : Page
     {
-        List<Client> clients = new(); 
-        HttpClient client = new HttpClient();
+        private Client client = new();
+        HttpClient _client = new();
+        private List<Client> _clients = new();
         public ClientPage()
         {
             InitializeComponent();
@@ -24,21 +25,20 @@ namespace FirstApiClient.Pages
         public async Task DisplayProducts()
         {
             await GetClient();
-            ClientListView.ItemsSource = clients;
+            ClientListView.ItemsSource = _clients;
         }
 
         public void SetConnectOpt()
         {
-            client.BaseAddress = new Uri("https://localhost:7120/api/");
-            client.DefaultRequestHeaders.Accept.Clear();
+            _client.BaseAddress = new Uri("https://localhost:7120/api/");
+            _client.DefaultRequestHeaders.Accept.Clear();
         }
 
         public async Task GetClient()
         {
-            var response = await client.GetAsync("Client/GetClient?id=1");
-            var result = await response.Content.ReadAsStringAsync();
-            clients = JsonSerializer.Deserialize<List<Client>>(result);
-            MessageBox.Show(clients.ElementAt(0).LastName);
+            var response = await _client.GetStringAsync("Client/GetClient?id=1");
+            client = JsonSerializer.Deserialize<Client>(response);
+            _clients.Add(client);
         }
     }
 }

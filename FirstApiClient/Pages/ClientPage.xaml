@@ -25,12 +25,10 @@
         </StackPanel>
         
         <StackPanel Grid.Column="1" Grid.Row="1">
-            <ListView Name="ClientListView">
+            <ListView Name="ClientListView" Height="150">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding LastName}"></TextBlock>
-                        </StackPanel>
+                        <TextBlock Height="150" Width="50" Name="TextBlock1" Text="{Binding LastName}"></TextBlock>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
