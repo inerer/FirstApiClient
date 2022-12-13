@@ -13,28 +13,28 @@ namespace FirstApiClient.Pages
     public partial class ClientPage : Page
     {
         private Client client = new();
-        HttpClient _client = new();
-        private List<Client> _clients = new();
+        private readonly HttpClient _client = new();
+        private readonly List<Client> _clients = new();
         public ClientPage()
         {
             InitializeComponent();
             SetConnectOpt();
             DisplayProducts();
         }
-        
-        public async Task DisplayProducts()
+
+        private async Task DisplayProducts()
         {
             await GetClient();
             ClientListView.ItemsSource = _clients;
         }
 
-        public void SetConnectOpt()
+        private void SetConnectOpt()
         {
             _client.BaseAddress = new Uri("https://localhost:7120/api/");
             _client.DefaultRequestHeaders.Accept.Clear();
         }
 
-        public async Task GetClient()
+        private async Task GetClient()
         {
             var response = await _client.GetStringAsync("Client/GetClient?id=1");
             client = JsonSerializer.Deserialize<Client>(response);

@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:FirstApiClient"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <Style TargetType="TextBlock" x:Key="ClientTextBlock">
+            <Setter Property="Height" Value="20"></Setter>
+            <Setter Property="Width" Value="150"></Setter>
+        </Style>
          
     </Application.Resources>
 </Application>

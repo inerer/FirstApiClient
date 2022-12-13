@@ -28,7 +28,11 @@
             <ListView Name="ClientListView" Height="150">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Height="150" Width="50" Name="TextBlock1" Text="{Binding LastName}"></TextBlock>
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource ClientTextBlock}" Text="{Binding LastName}"></TextBlock>
+                            <TextBlock Style="{StaticResource ClientTextBlock}" Text="{Binding FirstName}"></TextBlock>
+                            <TextBlock Style="{StaticResource ClientTextBlock}" Text="{Binding MiddleName}"></TextBlock>
+                        </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
